@@ -1,0 +1,24 @@
+{
+  "name": "simple-storage-blockchain",
+  "version": "1.0.0",
+  "description": "simple-storage-blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bibiruu/simple-storage-blockchain.git"
+  },
+  "keywords": [],
+  "author": "www.github.com/bibiruu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bibiruu/simple-storage-blockchain/issues"
+  },
+  "homepage": "https://github.com/Bibiruu/simple-storage-blockchain#readme",
+  "dependencies": {
+    "static-server": "^3.0.0",
+    "truffle": "^5.7.3"
+  }
+}

@@ -45,11 +45,8 @@ const simpleStorageABI = [
 //0x45408799B913127C86A73b8b6006331E171A0FD9
 const simpleStorageAddress = '0xccdf5E879841501EfE62d351DB951072834be550';
 const web3 = new Web3('HTTP://127.0.0.1:7545');
-const simpleStorage = new web3.eth.Contract(simpleStorageABI, simpleStorageAddress, {
-  from: '0x45408799B913127C86A73b8b6006331E171A0FD9',
-  gasPrice: '20000000000'
-});
-console.log('SIMPLESTORAGE', simpleStorage)
+const simpleStorage = new web3.eth.Contract(simpleStorageABI, simpleStorageAddress);
+console.log('SIMPLESTORAGE', simpleStorage, simpleStorageABI)
 
 //bootstrap basics for snatching data
 document.addEventListener('DOMContentLoaded', async () => {
@@ -69,20 +66,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       //communicating with the smart contrct
       const result = await simpleStorage.methods.get().call();
-        $data.innerHTML = result;
-      
+      $data.innerHTML = result;
     } catch (error) {
       console.log('error getting data', error)
     }
-    getData();
   };
-  
+  getData();
 
   //console.log('DATA', getData())
 
   $setData.addEventListener('submit', async (e) => {
     e.preventDefault()
     const data = await e.target.elements[0].value;
+    console.log('data', data)
     try {
       // If accounts array is empty, fetch accounts
       if (accounts.length === 0) {
@@ -90,8 +86,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       await simpleStorage.methods.set(data).send({ from: accounts[0] });
       await getData();
-      
-      
     } catch (error) {
       console.log('error in fetching data', error)
     }
